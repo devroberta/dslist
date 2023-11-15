@@ -3,7 +3,7 @@ package com.devroberta.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tb_game")
+@Table(name ="tb_game")
 public class Game {
 
     @Id
@@ -11,7 +11,7 @@ public class Game {
     private Long id;
     private String title;
 
-    @Column(name = "game_year")
+    @Column(name =  "game_year")
     private Integer year;
     private String genre;
     private String platforms;

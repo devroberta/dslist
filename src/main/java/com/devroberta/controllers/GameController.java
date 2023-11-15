@@ -1,7 +1,6 @@
 package com.devroberta.controllers;
 
 import com.devroberta.dto.GameMinDTO;
-import com.devroberta.entities.Game;
 import com.devroberta.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
