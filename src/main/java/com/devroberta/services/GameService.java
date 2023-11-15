@@ -23,7 +23,16 @@ public class GameService {
         return result;
     }
 
+    @Transactional(readOnly = true)
     public GameDTO findById(Long id) {
         return new GameDTO(gameRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Entity " + id + " not found")));
     }
+
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        var originList = gameRepository.searchByList(listId);
+        var result = originList.stream().map(game -> new GameMinDTO(game)).toList();
+        return result;
+    }
+
 }
