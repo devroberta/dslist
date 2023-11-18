@@ -6,6 +6,10 @@ services:
   pg-docker:
     image: postgres:14-alpine
     container_name: dev-postgresql
+    deploy:
+      resources:
+        limits:
+          memory: 50m
     environment:
       POSTGRES_DB: mydatabase
       POSTGRES_PASSWORD: 1234567
@@ -21,6 +25,10 @@ services:
   pgadmin-docker:
     image: dpage/pgadmin4
     container_name: dev-pgadmin
+    deploy:
+      resources:
+        limits:
+          memory: 350m
     environment:
       PGADMIN_DEFAULT_EMAIL: me@example.com
       PGADMIN_DEFAULT_PASSWORD: 1234567
