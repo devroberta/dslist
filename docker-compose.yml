@@ -1,0 +1,40 @@
+versão : " 3.7 "
+Serviços :
+  # ================================================ ================================================= =================
+  # SERVIDOR POSTGRES
+  # ================================================ ================================================= =================
+  pg-docker :
+    imagem : postgres:14-alpine
+    nome_do_container : dev-postgresql
+    ambiente :
+      POSTGRES_DB : meu banco de dados
+      POSTGRES_PASSWORD : 1234567
+    portos :
+      -5433 :5432
+    volumes :
+      - ./.data/postgresql/data:/var/lib/postgresql/data
+    redes :
+      - rede de desenvolvimento
+  # ================================================ ================================================= =================
+  #PGADMIN _
+  # ================================================ ================================================= =================
+  pgadmin-docker :
+    imagem : dpage/pgadmin4
+    nome_do_container : dev-pgadmin
+    ambiente :
+      PGADMIN_DEFAULT_EMAIL : me@example.com
+      PGADMIN_DEFAULT_PASSWORD : 1234567
+    portos :
+      - 5050:80
+    volumes :
+      - ./.data/pgadmin:/var/lib/pgadmin
+    depende de :
+      - pg-docker
+    redes :
+      - rede de desenvolvimento
+# ================================================ ================================================= ===================
+#REDE _
+# ================================================ ================================================= ===================
+redes :
+  rede de desenvolvimento :
+    motorista : ponte
