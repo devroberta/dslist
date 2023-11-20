@@ -35,7 +35,7 @@ services:
     ports:
       - 5050:80
     volumes:
-      - ./.data/pgadmin:/home/Roberta/var/pgadmin
+      - ./.data/pgadmin:/home/${USER}/var/pgadmin
     depends_on:
       - pg-docker
     networks:
