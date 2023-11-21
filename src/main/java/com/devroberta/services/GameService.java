@@ -2,6 +2,7 @@ package com.devroberta.services;
 
 import com.devroberta.dto.GameDTO;
 import com.devroberta.dto.GameMinDTO;
+import com.devroberta.exception.GameNotFound;
 import com.devroberta.repositories.GameRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class GameService {
 
     @Transactional(readOnly = true)
     public GameDTO findById(Long id) {
-        return new GameDTO(gameRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Entity " + id + " not found")));
+        return new GameDTO(gameRepository.findById(id).orElseThrow(() -> new GameNotFound("Entity " + id + " not found")));
     }
 
     @Transactional(readOnly = true)

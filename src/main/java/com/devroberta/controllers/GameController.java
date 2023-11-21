@@ -20,12 +20,12 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping
-    private ResponseEntity<List<GameMinDTO>> findAll() {
+    public ResponseEntity<List<GameMinDTO>> findAll() {
         return ResponseEntity.ok().body(gameService.findAll());
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<GameDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<GameDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(gameService.findById(id));
     }
 }

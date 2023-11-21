@@ -22,17 +22,17 @@ public class GameListController {
     private GameService gameService;
 
     @GetMapping
-    private ResponseEntity<List<GameListDTO>> findAll() {
+    public ResponseEntity<List<GameListDTO>> findAll() {
         return ResponseEntity.ok().body(gameListService.findAll());
     }
 
     @GetMapping(value = "/{listId}/games")
-    private ResponseEntity<List<GameMinDTO>> findByList(@PathVariable Long listId) {
+    public ResponseEntity<List<GameMinDTO>> findByList(@PathVariable Long listId) {
         return ResponseEntity.ok().body(gameService.findByList(listId));
     }
 
     @PostMapping(value = "/{listId}/replacement")
-    private ResponseEntity<Void> move(@PathVariable Long listId, @RequestBody ReplacementDTO body) {
+    public ResponseEntity<Void> move(@PathVariable Long listId, @RequestBody ReplacementDTO body) {
         gameListService.move(listId, body.getSourceIndex(), body.getDestinationIndex());
         return ResponseEntity.ok().build();
     }
